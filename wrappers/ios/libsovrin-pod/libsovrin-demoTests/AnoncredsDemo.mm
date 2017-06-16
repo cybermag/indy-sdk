@@ -44,11 +44,13 @@
     
     ret = [[WalletUtils sharedInstance] createWalletWithPoolName:poolName
                                                       walletName:walletName
-                                                           xtype:xType];
+                                                           xtype:xType
+                                                          config:nil];
     XCTAssertEqual( ret.code, Success, @"WalletUtils::createWalletWithPoolName() failed!");
     
     // 2. Open wallet
     ret = [[WalletUtils sharedInstance] openWalletWithName:walletName
+                                                    config:nil
                                                  outHandle:&walletHandle];
     XCTAssertEqual( ret.code, Success, @"WalletUtils::openWalletWithName() failed!");
 

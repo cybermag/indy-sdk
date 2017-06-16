@@ -65,6 +65,7 @@
 
 - (NSError *)issuerCreateClaimDefinifionWithWalletHandle:(SovrinHandle)walletHandle
                                               schemaJson:(NSString *)schemaJson
+                                          createNonRevoc:(BOOL)createNonRevoc
                                             claimDefJson:(NSString **)claimDefJson
                                             claimDefUUID:(NSString **)claimDefUUID;
 

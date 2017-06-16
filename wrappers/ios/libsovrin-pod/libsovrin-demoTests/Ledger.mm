@@ -1742,6 +1742,7 @@
     NSString *claimDefJson;
     ret = [[AnoncredsUtils sharedInstance] issuerCreateClaimDefinifionWithWalletHandle:walletHandle
                                                                             schemaJson:[NSDictionary toString:schema]
+                                                                        createNonRevoc:NO
                                                                           claimDefJson:&claimDefJson
                                                                           claimDefUUID:nil];
     XCTAssertEqual(ret.code, Success, @"AnoncredsUtils::issuerCreateClaimDefinifionWithWalletHandle() failed");

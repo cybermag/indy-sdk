@@ -116,6 +116,7 @@
 
 - (NSError *)issuerCreateClaimDefinifionWithWalletHandle:(SovrinHandle)walletHandle
                                               schemaJson:(NSString *)schemaJson
+                                          createNonRevoc:(BOOL)createNonRevoc
                                             claimDefJson:(NSString **)claimDefJson
                                             claimDefUUID:(NSString **)claimDefUUID;
 {
@@ -127,7 +128,7 @@
     NSError *ret = [SovrinAnoncreds  issuerCreateAndStoreClaimDefWithWalletHandle:walletHandle
                                                                        schemaJSON:schemaJson
                                                                     signatureType:nil
-                                                                   createNonRevoc:NO
+                                                                   createNonRevoc:createNonRevoc
                                                                        completion:^(NSError *error, NSString *claimDefJSON, NSString *claimDefUUID)
                     {
                         err = error;
@@ -162,6 +163,7 @@
     
     ret = [self issuerCreateClaimDefinifionWithWalletHandle:walletHandle
                                                  schemaJson:schema
+                                             createNonRevoc:NO
                                                claimDefJson:&json
                                                claimDefUUID:&uuid];
     if( ret.code != Success )

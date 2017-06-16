@@ -79,9 +79,10 @@
     return err;
 }
 
-- (NSError *)createWalletWithPoolName:(NSString*) poolName
-                           walletName:(NSString*) walletName
-                                xtype:(NSString*) xtype
+- (NSError *)createWalletWithPoolName:(NSString *)poolName
+                           walletName:(NSString *)walletName
+                                xtype:(NSString *)xtype
+                               config:(NSString *)config
 {
     __block NSError *err = nil;
     NSError *ret = nil;
@@ -91,7 +92,7 @@
     ret = [[SovrinWallet sharedInstance] createWalletWithPoolName:  poolName
                                                              name:  walletName
                                                             xType:  xtype
-                                                           config:  nil
+                                                           config:  config
                                                       credentials:  nil
                                                        completion: ^(NSError *error)
            {
@@ -161,6 +162,7 @@
 }
 
 - (NSError *)openWalletWithName:(NSString *)walletName
+                         config:(NSString *)config
                       outHandle:(SovrinHandle *)handle
 {
     __block NSError *err;
@@ -170,7 +172,7 @@
     XCTestExpectation* completionExpectation = [[ XCTestExpectation alloc] initWithDescription: @"completion finished"];
     
     ret = [[SovrinWallet sharedInstance] openWalletWithName:walletName
-                                              runtimeConfig:nil
+                                              runtimeConfig:config
                                                 credentials:nil
                                                  completion:^(NSError *error, SovrinHandle h)
            {
